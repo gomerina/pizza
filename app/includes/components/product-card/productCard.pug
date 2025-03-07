@@ -1,0 +1,30 @@
+mixin productCard(className, [...arr])
+    each product in arr 
+        .product-card(class=className) 
+            .product-card__head 
+                a(href="#").product-card__img 
+                    picture 
+                        source(srcset=product.webp, type="image/webp")
+                        img(src=product.img, alt="") 
+                .product-card__controls 
+                    label.product-card__compare 
+                        input(type="checkbox")
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
+                            <rect x="1" y="1.25" width="38" height="38" rx="19" fill="#F4BD7F"/>
+                            <rect x="1" y="1.25" width="38" height="38" rx="19" stroke="#F4BD7F" stroke-width="2"/>
+                            <path d="M14 17.25L14 29.25L16 29.25L16 17.25L14 17.25ZM26 11.25L24 11.25L24 29.25L26 29.25L26 11.25ZM19 17.25L19 29.25L21 29.25L21 17.25L19 17.25Z" fill="white"/>
+                        </svg> 
+            a(href="#").product-card__body 
+                .product-card__name=product.name 
+                .product-card__descr 
+                    p=product.descr
+            .product-card__footer 
+                .product-card__values 
+                    .product-card__weight=product.weight 
+                    .product-card__price 
+                        span.product-card__current=product.currentPrice 
+                button.btn.white 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                        <path d="M17.46 9.41896L13.08 2.85896C12.89 2.57896 12.57 2.43896 12.25 2.43896C11.93 2.43896 11.61 2.57896 11.42 2.86896L7.04 9.41896H2.25C1.7 9.41896 1.25 9.86896 1.25 10.419C1.25 10.509 1.26 10.599 1.29 10.689L3.83 19.959C4.06 20.799 4.83 21.419 5.75 21.419H18.75C19.67 21.419 20.44 20.799 20.68 19.959L23.22 10.689L23.25 10.419C23.25 9.86896 22.8 9.41896 22.25 9.41896H17.46ZM9.25 9.41896L12.25 5.01896L15.25 9.41896H9.25ZM12.25 17.419C11.15 17.419 10.25 16.519 10.25 15.419C10.25 14.319 11.15 13.419 12.25 13.419C13.35 13.419 14.25 14.319 14.25 15.419C14.25 16.519 13.35 17.419 12.25 17.419Z" fill="#323232"/>
+                    </svg>
+                    span В корзину

@@ -1,0 +1,15 @@
+mixin reviewsCard(className, [...arr]) 
+    each reviews in arr 
+        .reviews-card(class=className) 
+            .reviews-card__head 
+                .reviews-card__img 
+                    picture 
+                        source(srcset="img/webp/rc@x2.webp", type="image/webp")
+                        img(src="img/rc@x2.png", alt="")
+                .reviews-card__author 
+                    .reviews-card__name=reviews.name 
+                    .reviews-card__contact=reviews.contact
+            
+            .reviews-card__body 
+                each text in reviews.descr 
+                    span=text

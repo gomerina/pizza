@@ -1,0 +1,15 @@
+mixin promoCard(className, [...arr])
+    each promo in arr 
+        a(href="#").promo-card(class=className)
+            .promo-card__head 
+                picture 
+                    source(srcset=promo.webp, type="image/webp")
+                    img(src=promo.img, alt="")
+            .promo-card__body
+                .h3.promo-card__slogan=promo.slogan 
+                .promo-card__descr 
+                    each descr in promo.text 
+                        span=descr
+
+            
+

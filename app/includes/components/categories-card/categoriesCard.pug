@@ -1,0 +1,8 @@
+mixin categoriesCard(className, [...arr])
+    each categories in arr 
+        a(href="#" class=className).categories-card
+            picture 
+                source(srcset=categories.webp, type="image/webp")
+                img(src=categories.img, alt="")
+            .categories-card__name
+                span=categories.name

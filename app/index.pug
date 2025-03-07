@@ -1,0 +1,211 @@
+doctype html
+html(lang="ru")
+    head
+        include includes/chunk/head
+        include includes/variables
+        title Главная
+    body  
+        include includes/chunk/header/header
+        main 
+            .main-screen.swiper 
+                .swiper-wrapper 
+                    each item in mainScreen
+                        .main-screen__item.swiper-slide 
+                            .main-screen__img 
+                                picture 
+                                    source(srcset=item.webp, type="image/webp")
+                                    img(src=item.webp, alt="")
+                            .main-screen__content 
+                                .container 
+                                    .h1.main-screen__heading=item.heading
+                                    .main-screen__descr 
+                                        p=item.descr 
+                                    if(item.btn) 
+                                        a(href="#").btn 
+                                            span Забронировать столик 
+                .swiper-pagination
+
+            
+            
+            .section.categories 
+                .section__outer
+                    .section__outer-name 
+                        span Меню
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1" height="182" viewBox="0 0 1 182" fill="none">
+                            <line x1="0.5" y1="182" x2="0.5" stroke="black"/>
+                        </svg>
+                    .container 
+                        h2 
+                            span Мы предлагаем ознакомиться 
+                            span с нашим меню
+                        .categories__layout 
+                            include includes/components/categories-card/categoriesCard 
+                            +categoriesCard('', [...mainCategories])
+
+            .section.popular 
+                .section__outer
+                    .section__outer-name 
+                        span Популярное
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1" height="120" viewBox="0 0 1 182" fill="none">
+                            <line x1="0.5" y1="182" x2="0.5" stroke="black"/>
+                        </svg>
+                    .container
+                        h2 
+                            span Популярные блюда 
+                        .slider-box 
+                            .product-slider.swiper 
+                                .swiper-wrapper 
+                                    include includes/components/product-card/productCard 
+                                    +productCard('swiper-slide', [...mainProducts])
+                                
+                                .slider-controls 
+                                    button.swiper-button-prev 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="16" viewBox="0 0 23 16" fill="none">
+                                            <path d="M0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292893 7.29289ZM23 7L1 7V9L23 9V7Z" fill="#323232"/>
+                                        </svg>
+                                    .swiper-pagination
+                                    button.swiper-button-next 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="16" viewBox="0 0 23 16" fill="none">
+                                            <path d="M22.7071 8.70711C23.0976 8.31658 23.0976 7.68342 22.7071 7.29289L16.3431 0.928932C15.9526 0.538408 15.3195 0.538408 14.9289 0.928932C14.5384 1.31946 14.5384 1.95262 14.9289 2.34315L20.5858 8L14.9289 13.6569C14.5384 14.0474 14.5384 14.6805 14.9289 15.0711C15.3195 15.4616 15.9526 15.4616 16.3431 15.0711L22.7071 8.70711ZM0 9H22V7H0L0 9Z" fill="#323232"/>
+                                        </svg>
+
+                            
+            .section.promo 
+                .section__outer 
+                    .promo__bg 
+                        picture 
+                            source(srcset="img/webp/promo-bg@x2.webp", type="image/webp")
+                            img(src="img/promo-bg@x2.jpg", alt="")
+                    .section__outer-name 
+                        span Акции
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1" height="120" viewBox="0 0 1 182" fill="none">
+                            <line x1="0.5" y1="182" x2="0.5" stroke="black"/>
+                        </svg>
+                    .container 
+                        h2 Акции и спецпредложения
+                        .slider-box 
+                            .promo__slider.swiper 
+                                .swiper-wrapper 
+                                    include includes/components/promo-card/promoCard 
+                                    +promoCard('swiper-slide', [...mainPromo])
+
+                                .slider-controls 
+                                    button.swiper-button-prev 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="16" viewBox="0 0 23 16" fill="none">
+                                            <path d="M0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292893 7.29289ZM23 7L1 7V9L23 9V7Z" fill="#323232"/>
+                                        </svg>
+                                    .swiper-pagination
+                                    button.swiper-button-next 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="16" viewBox="0 0 23 16" fill="none">
+                                            <path d="M22.7071 8.70711C23.0976 8.31658 23.0976 7.68342 22.7071 7.29289L16.3431 0.928932C15.9526 0.538408 15.3195 0.538408 14.9289 0.928932C14.5384 1.31946 14.5384 1.95262 14.9289 2.34315L20.5858 8L14.9289 13.6569C14.5384 14.0474 14.5384 14.6805 14.9289 15.0711C15.3195 15.4616 15.9526 15.4616 16.3431 15.0711L22.7071 8.70711ZM0 9H22V7H0L0 9Z" fill="#323232"/>
+                                        </svg>
+
+
+            .section.reviews 
+                .reviews__left 
+                    picture 
+                        source(srcset="img/webp/rl@x2.webp", type="image/webp")
+                        img(src="img/rl@x2.png", alt="")
+                .reviews__right 
+                    picture 
+                        source(srcset="img/webp/rr@x2.webp", type="image/webp")
+                        img(src="img/rr@x2.png", alt="")
+                .reviews__bg 
+                    picture 
+                        source(srcset="img/webp/reviews-bg.webp", type="image/webp")
+                        img(src="img/reviews-bg.jpg", alt="")
+                .section__outer 
+                    .section__outer-name 
+                        span Отзывы
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1" height="120" viewBox="0 0 1 182" fill="none">
+                            <line x1="0.5" y1="182" x2="0.5" stroke="white"/>
+                        </svg>
+                    .container 
+                        h2 
+                            span Ресторан «A Rome» рекомендуют 
+                            span наши гости
+                        .slider-box 
+                            .reviews__slider.swiper 
+                                .swiper-wrapper 
+                                    include includes/components/reviews-card/reviewsCard 
+                                    +reviewsCard('swiper-slide', [...mainReviews])
+                                .slider-controls 
+                                    button.swiper-button-prev 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="16" viewBox="0 0 23 16" fill="none">
+                                            <path d="M0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292893 7.29289ZM23 7L1 7V9L23 9V7Z" fill="#fff"/>
+                                        </svg>
+                                    .swiper-pagination
+                                    button.swiper-button-next 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="16" viewBox="0 0 23 16" fill="none">
+                                            <path d="M22.7071 8.70711C23.0976 8.31658 23.0976 7.68342 22.7071 7.29289L16.3431 0.928932C15.9526 0.538408 15.3195 0.538408 14.9289 0.928932C14.5384 1.31946 14.5384 1.95262 14.9289 2.34315L20.5858 8L14.9289 13.6569C14.5384 14.0474 14.5384 14.6805 14.9289 15.0711C15.3195 15.4616 15.9526 15.4616 16.3431 15.0711L22.7071 8.70711ZM0 9H22V7H0L0 9Z" fill="#fff"/>
+                                        </svg>
+        
+                        a(data-type="ajax" href="modals/review-modal.html").btn.jsOpenModal 
+                            span Оставить отзыв
+        
+        
+            .section.contacts 
+                .section__outer 
+                    .section__outer-name 
+                        span Контакты
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1" height="120" viewBox="0 0 1 182" fill="none">
+                            <line x1="0.5" y1="182" x2="0.5" stroke="black"/>
+                        </svg>
+                    .container 
+                        .contacts__inner 
+                            .contacts__content 
+                                h2 
+                                    span Контакты
+                                .contacts__wrapper 
+                                    .contacts__item 
+                                        .contacts__item-name Телефон:
+                                        .contacts__item-content 
+                                            p 
+                                                a(href="tel:+78432929709") +7 (843) 292-97-09
+                                            p 
+                                                a(href="tel:+78432920292") +7 (843) 292-02-92
+                                    .contacts__item 
+                                        .contacts__item-name Время работы:
+                                        .contacts__item-content 
+                                            p Ресторан открыт ежедневно с 10:00 до 23:00
+                                            p Заказы на доставку принимаются ежедневно с 10:00 до 23:00
+                                    .contacts__item 
+                                        .contacts__item-name Адрес:
+                                        .contacts__item-content 
+                                            p г. Казань, ул. Театральная д. 3
+                                    
+                                    .contacts__item 
+                                        .contacts__item-name Вопросы и предложения:
+                                        .contacts__item-content 
+                                            p 
+                                                a(href="mailto:arome28@yandex.ru") arome28@yandex.ru
+                                            
+                                
+                            
+                            .contacts__map#map
+
+        
+        
+        
+        include includes/chunk/footer/footer
+        script(src="//api-maps.yandex.ru/2.1/?&lang=ru-RU&onload=getYaMap") 
+        script.
+            function getYaMap() {
+                var myMap1 = new ymaps.Map('map', {
+                    center: [55.795530, 49.123653],
+                    zoom: 15
+                }, {
+                    searchControlProvider: 'yandex#search'
+                }),
+                    MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+                        '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+                    ),
+                    myPlacemark = new ymaps.Placemark(myMap1.getCenter(), {
+                        
+                    }, {
+                        preset: 'islands#redDotIcon'
+                    })
+                myMap1.geoObjects.add(myPlacemark)
+                myMap1.behaviors.disable('scrollZoom')
+            }
+        

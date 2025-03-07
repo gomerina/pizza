@@ -1,0 +1,14 @@
+.modal 
+    .modal__head
+        .modal__heading Оставить отзыв 
+        .modal__subheading Напишите отзыв о нашей работе или продукции
+    form(action="#").form
+        .form__layout 
+            .form__item 
+                input(type="text" placeholder="Имя").form__input
+            .form__item 
+                input(type="tel" placeholder="Номер телефона").form__input.jsTel
+            .form__item.span-2 
+                textarea(placeholder="Комментарий").form__textarea
+        button.btn 
+            span Отправить
